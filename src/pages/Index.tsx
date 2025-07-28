@@ -1,8 +1,37 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { useState, useEffect } from 'react';
 
 export default function Index() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const audioElement = new Audio('https://dl.dropboxusercontent.com/s/sample-music.mp3');
+    audioElement.loop = true;
+    audioElement.volume = 0.3;
+    setAudio(audioElement);
+
+    return () => {
+      if (audioElement) {
+        audioElement.pause();
+      }
+    };
+  }, []);
+
+  const toggleMusic = () => {
+    if (audio) {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play().catch(() => {
+          console.log('Не удалось воспроизвести музыку');
+        });
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-pastel-pink via-pastel-lavender to-pastel-sky">
       {/* Главное поздравление */}
@@ -85,50 +114,50 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Галерея милых животных */}
+      {/* Галерея смешных мемов */}
       <section className="container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-center text-primary mb-12">
-          Милые друзья шлют привет! 🐾
+          Смешные поздравления! 😄
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:rotate-1">
             <CardContent className="p-0">
               <img 
-                src="/img/85cb8d28-00a2-49aa-a54f-4230815df490.jpg" 
-                alt="Милая капибара"
+                src="/img/249191c5-db9c-41ba-8c29-a59e3522fd9a.jpg" 
+                alt="Смешной мем с тортом"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Капибара 🐹</h3>
-                <p className="text-foreground/70">Спокойствие и гармония в твой день!</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Сюрприз! 🎂</h3>
+                <p className="text-foreground/70">Когда понимаешь, что стал ещё старше! 😅</p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-rotate-1">
             <CardContent className="p-0">
               <img 
-                src="/img/00871be6-5003-4621-badc-79157dd03d78.jpg" 
-                alt="Милая обезьянка"
+                src="/img/df8f40d6-2196-4c7a-81dd-719013b4feff.jpg" 
+                alt="Танцующий мем"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Обезьянка 🐵</h3>
-                <p className="text-foreground/70">Игривость и веселье с тобой!</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Вечеринка! 🕺</h3>
+                <p className="text-foreground/70">Танцуем до утра! Возраст - это просто цифра!</p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:rotate-1">
             <CardContent className="p-0">
               <img 
-                src="/img/008e4d2c-b91c-4e9f-b49f-567e55b7887c.jpg" 
-                alt="Милый котик"
+                src="/img/7c7645db-abd3-4d46-81de-0c46e4070c97.jpg" 
+                alt="Праздничный мем"
                 className="w-full h-64 object-cover"
               />
               <div className="p-6 text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Котик 🐱</h3>
-                <p className="text-foreground/70">Уют и тепло в твоём доме!</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Празднуем! 🎉</h3>
+                <p className="text-foreground/70">Шарики, конфетти и море веселья!</p>
               </div>
             </CardContent>
           </Card>
@@ -147,13 +176,27 @@ export default function Index() {
               Желаем тебе незабываемых моментов, тёплых встреч и исполнения всех желаний. 
               Ты особенный человек, и этот день должен быть таким же особенным!
             </p>
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <Icon name="Heart" className="mr-2" size={20} />
-              С Любовью! 💕
-            </Button>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <Icon name="Heart" className="mr-2" size={20} />
+                С Любовью! 💕
+              </Button>
+              <Button 
+                onClick={toggleMusic}
+                size="lg" 
+                variant="outline"
+                className="px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-white/80 hover:bg-white"
+              >
+                <Icon name={isPlaying ? "Pause" : "Play"} className="mr-2" size={20} />
+                {isPlaying ? "Пауза" : "Музыка"} 🎵
+              </Button>
+            </div>
+            <p className="text-sm text-foreground/60 mt-4">
+              💫 "Все для тебя рассветы и туманы" 💫
+            </p>
           </CardContent>
         </Card>
       </section>
