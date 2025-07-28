@@ -114,50 +114,52 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Галерея смешных мемов */}
+      {/* Галерея милых животных-гифок */}
       <section className="container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-center text-primary mb-12">
-          Смешные поздравления! 😄
+          Веселые друзья поздравляют! 🐵🐱
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:rotate-1">
+          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-110">
             <CardContent className="p-0">
               <img 
-                src="/img/249191c5-db9c-41ba-8c29-a59e3522fd9a.jpg" 
-                alt="Смешной мем с тортом"
-                className="w-full h-64 object-cover"
+                src="/img/b041d2be-ff3b-4fab-9912-a9db289b640b.jpg" 
+                alt="Танцующая обезьянка"
+                className="w-full h-64 object-cover animate-bounce-gentle"
               />
               <div className="p-6 text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Сюрприз! 🎂</h3>
-                <p className="text-foreground/70">Когда понимаешь, что стал ещё старше! 😅</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Обезьянка танцует! 🐵</h3>
+                <p className="text-foreground/70">Давай празднуем вместе! Танцы до утра! 💃</p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-rotate-1">
+          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-110">
             <CardContent className="p-0">
               <img 
-                src="/img/df8f40d6-2196-4c7a-81dd-719013b4feff.jpg" 
-                alt="Танцующий мем"
-                className="w-full h-64 object-cover"
+                src="/img/3cdb18e4-b020-4037-ab9c-1808d44d9de0.jpg" 
+                alt="Котик с шариками"
+                className="w-full h-64 object-cover animate-bounce-gentle"
+                style={{animationDelay: '0.5s'}}
               />
               <div className="p-6 text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Вечеринка! 🕺</h3>
-                <p className="text-foreground/70">Танцуем до утра! Возраст - это просто цифра!</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Котик играет! 🐱</h3>
+                <p className="text-foreground/70">Милый котёнок принёс шарики для праздника! 🎈</p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:rotate-1">
+          <Card className="bg-white/80 border-none shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-110">
             <CardContent className="p-0">
               <img 
-                src="/img/7c7645db-abd3-4d46-81de-0c46e4070c97.jpg" 
-                alt="Праздничный мем"
-                className="w-full h-64 object-cover"
+                src="/img/68607b5a-4a45-4353-8666-cf4fc8d0acc4.jpg" 
+                alt="Обезьянка со свечками"
+                className="w-full h-64 object-cover animate-bounce-gentle"
+                style={{animationDelay: '1s'}}
               />
               <div className="p-6 text-center">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Празднуем! 🎉</h3>
-                <p className="text-foreground/70">Шарики, конфетти и море веселья!</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Задувай свечи! 🎂</h3>
+                <p className="text-foreground/70">Обезьянка в колпачке готова к торту! 🐵🎉</p>
               </div>
             </CardContent>
           </Card>
